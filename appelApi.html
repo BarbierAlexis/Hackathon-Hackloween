@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.19.0/phaser.js"></script>
+    <title>Hackathon Hackloween</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+  </head>
+  <body>
+  
+    <script>
+
+    function fetchApi() {
+
+      axios.get(`https://hackathon-wild-hackoween.herokuapp.com/movies`)
+      .then((response) =>{
+          console.log(response)
+          console.log("API ouverte sur Movies")
+            })
+      }
+
+    fetchApi();
+
+
+    </script>
+  </body>
+</html>
