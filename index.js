@@ -1,6 +1,6 @@
 const config = {
-	width: 500,
-	height: 300,
+	width: 1000,
+	height: 600,
 	type: Phaser.AUTO,
 	physics: {
 		default : 'arcade',
@@ -21,15 +21,24 @@ let game = new Phaser.Game(config)
 let perso
 let cursors
 let hero
+let platforms
 let score = 0;
 let scoreText
 
 function preload () {
 	this.load.image('perso', './images/perso.jpeg')
 	this.load.image('hero', './images/perso1.png')
+	this.load.image('platform', '/images/platform.png');
 }
 
 function create(){
+
+	//Création des plateformes
+	platforms = this.physics.add.staticGroup();
+	platforms.create(600, 400, 'platform');
+    platforms.create(50, 250, 'platform');
+    platforms.create(750, 220, 'platform');
+
 	perso = this.physics.add.image(250,150, 'perso').setScale(0.2)
 	perso.body.collideWorldBounds = true;
 
@@ -40,7 +49,7 @@ function create(){
 
 
 	let group = this.physics.add.group({ key: 'hero', frameQuantity: 10 });
-	let rect = new Phaser.Geom.Rectangle(0, 0, 500, 300);
+	let rect = new Phaser.Geom.Rectangle(0, 0, 1000, 600);
 	Phaser.Actions.RandomRectangle(group.getChildren(), rect);
 
 	//this.physics.add.collider(perso,hero)  ==> Creer une collision
