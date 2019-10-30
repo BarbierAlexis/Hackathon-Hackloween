@@ -49,8 +49,11 @@ function create(){
 
 
 	let group = this.physics.add.group({ key: 'hero', frameQuantity: 10 });
-	let rect = new Phaser.Geom.Rectangle(0, 0, 1000, 600);
-	Phaser.Actions.RandomRectangle(group.getChildren(), rect);
+	//let rect = new Phaser.Geom.Rectangle(250, 150, 500, 300);
+	let rect = new Phaser.Geom.Rectangle(10, 20, 950, 100);
+	let rect1 = new Phaser.Geom.Rectangle(10, 100, 300, 300);
+	Phaser.Actions.RandomRectangle(group.getChildren(), rect, rect1);
+	// Phaser.Actions.RandomRectangle(group.getChildren(), rect1);
 
 	//this.physics.add.collider(perso,hero)  ==> Creer une collision
 
@@ -60,6 +63,9 @@ function create(){
 	// The Score
 
 	scoreText = this.add.text(16, 16, 'score: 0');
+
+	this.physics.add.collider(perso, platforms);
+
 }
 
 function update(){
