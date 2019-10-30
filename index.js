@@ -21,11 +21,12 @@ let game = new Phaser.Game(config)
 let perso
 let cursors
 let hero
+let score = 0;
+let scoreText
 
-function preload (){
+function preload () {
 	this.load.image('perso', './images/perso.jpeg')
 	this.load.image('hero', './images/perso1.png')
-
 }
 
 function create(){
@@ -47,6 +48,9 @@ function create(){
 	this.physics.add.overlap(perso, hero, kill, null, this);
 	this.physics.add.overlap(perso, group, kill, null, this);
 
+	// The Score
+
+	scoreText = this.add.text(16, 16, 'score: 0');
 }
 
 function update(){
@@ -77,4 +81,9 @@ function update(){
 function kill (perso, group)
 {
 	group.disableBody(true, true);
+
+	//Add and update the score
+	score += 1;
+	scoreText.setText('Score: ' + score);
+	
 }
