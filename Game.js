@@ -126,4 +126,24 @@ class GameScene extends Phaser.Scene {
 		
 	}
 
+
 }
+
+
+function getRandomInt (max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+function fetchApi() {
+    let number = getRandomInt(19);
+    axios.get(`https://hackathon-wild-hackoween.herokuapp.com/monsters`)
+    .then((response) => {
+        let monsters = response.data.monsters[number].name
+        // let monsters = response.data.monsters[0].name
+        console.log(response.data.monsters)
+        document.getElementById("monster").innerHTML = monsters;
+        
+          })
+    
+    }
+    
+ fetchApi();
